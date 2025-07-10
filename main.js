@@ -1,0 +1,1 @@
+// JS for scroll effects, voice assistant, reCAPTCHA setup
