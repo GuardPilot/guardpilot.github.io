@@ -1,17 +1,74 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>GuardPilot</title>
-<link rel='stylesheet' href='styles/styles.css'>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="GuardPilot | Autonomous Security Drones" />
+  <title>GuardPilot Landing</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-<h1>GuardPilot Landing</h1>
-<embed src='assets/GuardPilot_PitchDeck.pdf' type='application/pdf' width='100%' height='600px'>
-<video controls><source src='assets/demo.mp4' type='video/mp4'><track src='assets/subtitles.vtt' kind='subtitles' srclang='en'></video>
-<audio id='voice' src='assets/voice.mp3'></audio>
-<img src='assets/logo.svg' alt='Logo'>
-<img src='assets/drone.svg' alt='Drone'>
-<img src='assets/mvp-diagram.svg' alt='Diagram'>
-<script src='scripts/main.js'></script>
+  <header>
+    <h1>GuardPilot Landing</h1>
+    <nav>
+      <ul>
+        <li><a href="#demo">Demo</a></li>
+        <li><a href="#pitch">Pitch Deck</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="hero">
+      <h2>Автономные дроны-охранники 24/7</h2>
+      <p>Безопасность с ИИ-аналитикой и мгновенным реагированием</p>
+    </section>
+
+    <section id="demo">
+      <h2>GuardPilot в действии</h2>
+      <video controls autoplay muted loop width="480">
+        <source src="demo.mp4" type="video/mp4" />
+        <track src="subtitles.vtt" kind="subtitles" srclang="en" label="English" default />
+        Your browser does not support the video tag.
+      </video>
+    </section>
+
+    <section>
+      <h2>Голосовой ассистент</h2>
+      <button onclick="document.getElementById('voice').play()">▶️ Воспроизвести голос</button>
+      <audio id="voice">
+        <source src="voice.mp3" type="audio/mpeg" />
+        Your browser does not support the audio element.
+      </audio>
+    </section>
+
+    <section>
+      <h2>Иллюстрации</h2>
+      <img src="logo.svg" alt="Logo" width="100" />
+      <img src="drone.svg" alt="Drone" width="150" />
+      <img src="mvp-diagram.svg" alt="Diagram" width="200" />
+    </section>
+
+    <section id="pitch">
+      <h2>Pitch Deck</h2>
+      <p>Скачать или просмотреть презентацию инвестора:</p>
+      <object data="GuardPilot_PitchDeck.pdf" type="application/pdf" width="100%" height="600">
+        <a href="GuardPilot_PitchDeck.pdf" download>Скачать Pitch Deck</a>
+      </object>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>Telegram: <a href="https://t.me/JV_Guard" target="_blank">@JV_Guard</a></p>
+      <p>Email: <a href="mailto:2025pilot.guard@gmail.com">2025pilot.guard@gmail.com</a></p>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 GuardPilot. All rights reserved.</p>
+  </footer>
+
+  <script src="main.js"></script>
 </body>
 </html>
