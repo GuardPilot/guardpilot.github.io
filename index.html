@@ -1,74 +1,156 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="GuardPilot | Autonomous Security Drones" />
-  <title>GuardPilot Landing</title>
-  <link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GuardPilot | Автономные дроны-охранники</title>
+
+  <!-- SEO и мета-теги -->
+  <meta name="description" content="GuardPilot — автономные дроны-охранники с ИИ для круглосуточной охраны объектов.">
+  <meta name="keywords" content="дрон, охрана, безопасность, искусственный интеллект, security drone, AI">
+  <meta property="og:title" content="GuardPilot — автономные дроны-охранники">
+  <meta property="og:description" content="ИИ-дроны, патрулирующие объекты 24/7.">
+  <meta property="og:image" content="image/og-image.png">
+
+  <link rel="icon" href="image/logo.png" type="image/png">
+
+  <!-- Стили и подключения -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <style>
+    body { font-family: 'Montserrat', sans-serif; background: linear-gradient(#081C3A, #0A2463); color: #fff; margin:0; scroll-behavior: smooth; }
+    section { padding: 80px 20px; }
+    .hero { min-height: 100vh; background: url('image/hero-background.png') center/cover no-repeat; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+    .btn-glow { background: #2A9D8F; color: #fff; border: none; box-shadow: 0 0 10px rgba(42,157,143,0.8); }
+    .btn-glow:hover { box-shadow: 0 0 20px rgba(42,157,143,1); transform: scale(1.05); }
+    .glass { background: rgba(255,255,255,0.05); border-radius: 16px; backdrop-filter: blur(10px); padding: 40px; }
+    .scroll-top { position: fixed; right: 20px; bottom: 20px; background: #2A9D8F; color: #fff; border-radius: 50%; width: 50px; height: 50px; display: none; justify-content: center; align-items: center; font-size: 24px; cursor: pointer; z-index: 1000; }
+    .preloader { position: fixed; top:0; left:0; width:100vw; height:100vh; background:#081C3A; display:flex; align-items:center; justify-content:center; z-index:9999; }
+    footer { background: #000B1F; text-align: center; padding: 30px; font-size: 0.9rem; }
+    .three-canvas { width: 100%; height: 400px; }
+  </style>
 </head>
 <body>
-  <header>
-    <h1>GuardPilot Landing</h1>
-    <nav>
-      <ul>
-        <li><a href="#demo">Demo</a></li>
-        <li><a href="#pitch">Pitch Deck</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
 
-  <main>
-    <section id="hero">
-      <h2>Автономные дроны-охранники 24/7</h2>
-      <p>Безопасность с ИИ-аналитикой и мгновенным реагированием</p>
-    </section>
+<div class="preloader" id="preloader"><div class="spinner-border text-success"></div></div>
+<div class="scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</div>
 
-    <section id="demo">
-      <h2>GuardPilot в действии</h2>
-      <video controls autoplay muted loop width="480">
-        <source src="demo.mp4" type="video/mp4" />
-        <track src="subtitles.vtt" kind="subtitles" srclang="en" label="English" default />
-        Your browser does not support the video tag.
-      </video>
-    </section>
+<section class="hero">
+  <h1>GuardPilot: Autonomous Security Drones</h1>
+  <p>AI-powered drones patrolling and protecting your property 24/7</p>
+  <button class="btn btn-glow" data-bs-toggle="modal" data-bs-target="#aboutModal">О компании</button>
+</section>
 
-    <section>
-      <h2>Голосовой ассистент</h2>
-      <button onclick="document.getElementById('voice').play()">▶️ Воспроизвести голос</button>
-      <audio id="voice">
-        <source src="voice.mp3" type="audio/mpeg" />
-        Your browser does not support the audio element.
-      </audio>
-    </section>
+<section id="mvp" class="glass">
+  <h2>MVP Features</h2>
+  <ul>
+    <li>AI Object Detection (YOLOv8)</li>
+    <li>Autonomous Navigation (PX4)</li>
+    <li>Video Analytics (OpenCV)</li>
+    <li>Cloud + Telegram Alerts</li>
+  </ul>
+</section>
 
-    <section>
-      <h2>Иллюстрации</h2>
-      <img src="logo.svg" alt="Logo" width="100" />
-      <img src="drone.svg" alt="Drone" width="150" />
-      <img src="mvp-diagram.svg" alt="Diagram" width="200" />
-    </section>
+<section id="demo" class="glass">
+  <h2>Demo Video</h2>
+  <div class="ratio ratio-16x9">
+    <iframe src="https://www.youtube.com/embed/k3gPSqs8bLs" allowfullscreen></iframe>
+  </div>
+  <h3>3D Drone Model</h3>
+  <canvas id="droneCanvas" class="three-canvas"></canvas>
+</section>
 
-    <section id="pitch">
-      <h2>Pitch Deck</h2>
-      <p>Скачать или просмотреть презентацию инвестора:</p>
-      <object data="GuardPilot_PitchDeck.pdf" type="application/pdf" width="100%" height="600">
-        <a href="GuardPilot_PitchDeck.pdf" download>Скачать Pitch Deck</a>
-      </object>
-    </section>
+<section id="faq" class="glass">
+  <h2>FAQ</h2>
+  <p><strong>Q:</strong> Какие объекты можно охранять с помощью GuardPilot?<br><strong>A:</strong> Частные дома, склады, заводы, офисы и другие.</p>
+  <p><strong>Q:</strong> Как интегрируется GuardPilot?<br><strong>A:</strong> Через мобильное приложение и Telegram-бот.</p>
+</section>
 
-    <section id="contact">
-      <h2>Contact</h2>
-      <p>Telegram: <a href="https://t.me/JV_Guard" target="_blank">@JV_Guard</a></p>
-      <p>Email: <a href="mailto:2025pilot.guard@gmail.com">2025pilot.guard@gmail.com</a></p>
-    </section>
-  </main>
+<section id="contact" class="glass">
+  <h2>Contact Us</h2>
+  <form id="contactForm">
+    <input type="text" id="name" placeholder="Ваше имя" class="form-control mb-2" required>
+    <input type="email" id="email" placeholder="Email" class="form-control mb-2" required>
+    <textarea id="message" placeholder="Сообщение" class="form-control mb-2" required></textarea>
+    <button type="submit" class="btn btn-primary">Отправить</button>
+    <div id="form-status" class="mt-2"></div>
+  </form>
+</section>
 
-  <footer>
-    <p>© 2025 GuardPilot. All rights reserved.</p>
-  </footer>
+<footer>
+  <img src="image/logo.png" alt="Logo" width="50">
+  <p>© 2025 GuardPilot | <a href="mailto:2025pilot.guard@gmail.com">2025pilot.guard@gmail.com</a></p>
+  <p>Telegram: <a href="https://t.me/+S0gA-bTBQI4wODcy" target="_blank">@JV_Guard</a></p>
+</footer>
 
-  <script src="main.js"></script>
+<div class="modal fade" id="aboutModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content bg-dark text-white">
+      <div class="modal-header">
+        <h5 class="modal-title">О компании</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <p>GuardPilot — это команда инженеров и программистов, создающих инновационные решения для автономной охраны объектов с применением ИИ и дронов.</p>
+        <p>Наша миссия — сделать безопасность доступной, умной и круглосуточной.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.158.0/build/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.158.0/examples/js/loaders/GLTFLoader.js"></script>
+
+<script>
+window.addEventListener('load',()=>{ document.getElementById('preloader').style.display='none'; });
+window.addEventListener('scroll',()=>{
+  document.querySelector('.scroll-top').style.display = window.scrollY > 200 ? 'flex' : 'none';
+});
+AOS.init();
+
+// Contact form simulation
+const form=document.getElementById('contactForm');
+form.addEventListener('submit',e=>{
+  e.preventDefault();
+  document.getElementById('form-status').textContent='✅ Сообщение отправлено!';
+  form.reset();
+  setTimeout(()=>{document.getElementById('form-status').textContent='';},3000);
+});
+
+// 3D Drone Model
+const scene=new THREE.Scene();
+const camera=new THREE.PerspectiveCamera(60, window.innerWidth/window.innerHeight, 0.1,1000);
+const renderer=new THREE.WebGLRenderer({canvas:document.getElementById('droneCanvas'),alpha:true});
+renderer.setSize(window.innerWidth,400);
+const light=new THREE.DirectionalLight(0xffffff,1);
+light.position.set(5,5,5);
+scene.add(light);
+const ambient=new THREE.AmbientLight(0x404040,1.5);
+scene.add(ambient);
+camera.position.z=3;
+
+const loader=new THREE.GLTFLoader();
+loader.load('model/drone.glb',gltf=>{
+  const model=gltf.scene;
+  scene.add(model);
+  function animate(){
+    requestAnimationFrame(animate);
+    model.rotation.y+=0.005;
+    renderer.render(scene,camera);
+  }
+  animate();
+},undefined,err=>{console.error(err);});
+
+window.addEventListener('resize',()=>{
+  camera.aspect=window.innerWidth/400;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth,400);
+});
+</script>
+
 </body>
 </html>
